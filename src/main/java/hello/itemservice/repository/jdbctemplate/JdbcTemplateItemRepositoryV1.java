@@ -5,8 +5,6 @@ import hello.itemservice.repository.ItemRepository;
 import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.ItemUpdateDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -87,18 +85,18 @@ public class JdbcTemplateItemRepositoryV1 implements ItemRepository {
 
         String sql = "select id, item_name, price, quantity from item";
         //동적 쿼리
-        if ( StringUtils.hasText(itemName) || maxPrice != null) {
+        if ( StringUtils.hasText(itemName) || maxPrice != null ) {
             sql += " where";
         }
         boolean andFlag = false;
         List<Object> param = new ArrayList<>();
-        if (StringUtils.hasText(itemName)) {
+        if ( StringUtils.hasText(itemName) ) {
             sql += " item_name like concat('%',?,'%')";
             param.add(itemName);
             andFlag = true;
         }
-        if (maxPrice != null) {
-            if (andFlag) {
+        if ( maxPrice != null ) {
+            if ( andFlag ) {
                 sql += " and";
             }
             sql += " price <= ?";
