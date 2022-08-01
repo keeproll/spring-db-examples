@@ -43,7 +43,7 @@ class ItemRepositoryTest {
             ((MemoryItemRepository) itemRepository).clearStore();
         }
 
-        // @Transactional을 붙이면, 아래 트랜잭션과 관련된 코드를 사용할 필요가 없다.!!!!
+        //~ @Transactional을 붙이면, 아래 트랜잭션과 관련된 코드를 사용할 필요가 없다.!!!!
         // 트랜잭션 롤백
         //transactionManager.rollback(status);
     }
